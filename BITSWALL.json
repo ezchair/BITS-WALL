@@ -1,7 +1,7 @@
 {
   "allowHttpBackend": false,
   "backendCommand": "node backend -c \"ob69ek1x0m4r98thcr753xdszt7oll\" -s \"oUWvJv34GGHwsngqPpRXSeeB2uJa93NrYA3PilEDWXg=\"",
-  "backendFolderName": "bitswall/services",
+  "backendFolderName": "bits-wall/services",
   "certificateExceptions": [],
   "extensionViews": [
     {
@@ -101,7 +101,7 @@
     "whitelistedPanelUrls": []
   },
   "frontendCommand": "",
-  "frontendFolderName": "bitswall/public",
+  "frontendFolderName": "bits-wall/public",
   "name": "BITSWALL",
   "version": 1
 }
