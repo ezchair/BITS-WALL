@@ -123,7 +123,7 @@
     "whitelistedConfigUrls": [],
     "whitelistedPanelUrls": []
   },
-  "frontendCommand": "",
+  "frontendCommand": "serve -l 8080",
   "frontendFolderName": "bits-wall/public",
   "name": "BITSWALL",
   "version": 1
