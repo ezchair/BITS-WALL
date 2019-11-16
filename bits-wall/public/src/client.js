@@ -1,4 +1,14 @@
 const bits = window.Twitch.ext.bits;
+const global = {
+  canvas: null,
+  ctx: null,
+  vw: null,
+  vh: null,
+  mode: null,
+
+  bricks: [],
+  fBricks: []
+}
 
 bits.onTransactionComplete(function (o){
   const productType = o.product.sku;

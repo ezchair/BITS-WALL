@@ -1,6 +1,3 @@
-
-
-
 class Brick{
   constructor(id, x, y, sx, sy, type, active, reward){
     this.id = id
