@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const aws = require("aws-sdk");
 const app = express();
 const router = express.Router();
 const {
@@ -8,6 +7,11 @@ const {
 } = process.env;
 
 app.use(bodyParser.json());
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "YOUR-DOMAIN.TLD"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 app.use(router);
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
@@ -73,8 +77,8 @@ io.on('connection', function (socket) {
 
         //break brick
         const bitsWall = bitsWallMap[channelId];
-        for(let brick of bitsWall){
-            if(brick.id === brickId){
+        for (let brick of bitsWall) {
+            if (brick.id === brickId) {
                 brick.active = false;
             }
         }
