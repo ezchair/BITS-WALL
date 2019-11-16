@@ -74,32 +74,21 @@ function saveBrickSetting() {
 
 function launchBrickSetting() {
   const bitsWall  = convert2BrickData()
-  let requestData = { channelId, bitsWall }//config.content
+  let requestData = {"channelId":"470972377","bitsWall":bitsWall}//config.content
   twitch.rig.log('requestData')
   twitch.rig.log(requestData)
-  const url = 'http://ec2-18-179-200-250.ap-northeast-1.compute.amazonaws.com:3000/createWall'
-  // $.ajax({
-  //   type: 'POST',
-  //   url: url,
-  //   data: requestData,
-  //   success: function (response) { 
-  //     twitch.rig.log('response')
-  //     twitch.rig.log(response)
-  //     console.log((response))
+  $.ajax({
+    type: 'POST',
+    url: 'http://ec2-18-179-200-250.ap-northeast-1.compute.amazonaws.com:3000/createWall',
+    data: JSON.stringify(requestData),
+    success: function(data) {
+      console.log('ssuio');
+      console.log(data);
+      },
+    contentType: "application/json",
+    dataType: 'json'
+  });
 
-  //   },
-  //   error: function (error) {  
-  //     twitch.rig.log('error')
-  //     twitch.rig.log(error)
-  //     console.log((error))
-  //   }     
-  // });
-
-  $.post( url, requestData, function( data ) {
-    twitch.rig.log('data')
-    twitch.rig.log(data)
-    console.log((data))
-  })
 }
 
 function uploadImage(e) {
