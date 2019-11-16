@@ -8,13 +8,17 @@ const global = {
 
   bricks: [],
   fBricks: [],
-  handlingBrick: null
+  handlingBrick: null,
+  channelId: 43797122
 }
 
 bits.onTransactionComplete(function (o){
   const productType = o.product.sku;
   console.log(`Transaction ${productType} complete`);
   console.log(o);
+  if(global.handlingBrick){
+    breakBrick(global.handlingBrick.id, global.channelId)
+  }
   // Explore
 });
 
@@ -36,8 +40,8 @@ window.onload = function(){
   // console.log(global.canvas)
 
   // design canvas weight and height
-  global.vw = 600;
-  global.vh = 800;
+  global.vw = 1280;
+  global.vh = 720;
 
   global.canvas.width = global.vw;
   global.canvas.height = global.vh;
@@ -45,15 +49,22 @@ window.onload = function(){
   global.fcanvas = new fabric.Canvas('canvas');
 
   global.fcanvas.on('selection:created', (info)=>{
+    
+    if(info.selected.length > 1){
+      this.alert('Please select single brick')
+      global.fcanvas.discardActiveObject();
+      return
+    }
+
     let target = info.target
     let brick = global.bricks[target.brickIndex]
-    handlingBrick = brick
-    bits.useBits(brick.type);
+    global.handlingBrick = brick
     console.log('brick = ', brick)
+    bits.useBits(brick.type);
     global.fcanvas.discardActiveObject();
   })
 
-  fake()
+  // fake()
 }
 
 const handleReflash = (bricks) =>{
@@ -84,18 +95,18 @@ const handleReflash = (bricks) =>{
   }
 }
 
-let fake = () =>{
-  handleReflash([
-      new Brick(0, 100, 100, 1, 1, 0, "RECTANGLE", true, null),
-      new Brick(1, 200, 200, 1, 1, 0, "DIMOND", true, null),
-      new Brick(2, 300, 300, 1, 1, 0, "STAR", true, null)
-  ])
-}
+// let fake = () =>{
+//   handleReflash([
+//       new Brick(0, 100, 100, 1, 1, 0, "RECTANGLE", true, null),
+//       new Brick(1, 200, 200, 1, 1, 0, "DIMOND", true, null),
+//       new Brick(2, 300, 300, 1, 1, 0, "STAR", true, null)
+//   ])
+// }
 
-let fake2 = () =>{
-  handleReflash([
-      new Brick(0, 100, 150, 1, 1, 45, "RECTANGLE", true, null),
-      new Brick(1, 200, 250, 1, 1, 45, "DIMOND", true, null),
-      new Brick(2, 300, 350, 1, 1, 45, "STAR", true, null)
-  ])
-}
+// let fake2 = () =>{
+//   handleReflash([
+//       new Brick(0, 100, 150, 1, 1, 45, "RECTANGLE", true, null),
+//       new Brick(1, 200, 250, 1, 1, 45, "DIMOND", true, null),
+//       new Brick(2, 300, 350, 1, 1, 45, "STAR", true, null)
+//   ])
+// }
