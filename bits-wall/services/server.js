@@ -15,8 +15,8 @@ const bitsWallMap = {};
 const channelClientsMap = {};
 
 app.post('/createWall', (req, res) => {
-    const {channelId, wall} = req.body;
-    bitsWallMap[channelId] = wall;
+    const {channelId, bitsWall} = req.body;
+    bitsWallMap[channelId] = bitsWall;
     res.json();
 });
 
@@ -63,6 +63,7 @@ io.on('connection', function (socket) {
             channelClientsMap[channelId] = clients;
         }
         clients.push(socket);
+        socket.emit('updateWall', bitsWallMap);
         console.log(`channelId:${_channelId} register socketId:${socket.id}`);
     });
 
