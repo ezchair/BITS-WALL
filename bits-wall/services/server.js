@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const aws = require("aws-sdk");
 const app = express();
 const router = express.Router();
 const {
@@ -63,7 +64,7 @@ io.on('connection', function (socket) {
             channelClientsMap[channelId] = clients;
         }
         clients.push(socket);
-        socket.emit('updateWall', bitsWallMap);
+        socket.emit('updateWall', bitsWallMap[_channelId]);
         console.log(`channelId:${_channelId} register socketId:${socket.id}`);
     });
 
@@ -80,7 +81,7 @@ io.on('connection', function (socket) {
 
         if (clients && clients.length) {
             for (let s of clients) {
-                s.emit('updateWall', bitsWallMap, brickId);
+                s.emit('updateWall', bitsWallMap[_channelId], brickId);
                 console.log(`breakBrick channelId:${_channelId} brick:${brickId}`);
             }
         }
