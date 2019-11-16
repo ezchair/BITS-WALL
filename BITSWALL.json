@@ -29,7 +29,7 @@
     },
     {
       "id": "2",
-      "label": "",
+      "label": "config",
       "channelId": "470972377",
       "configurationAnchor": "panel",
       "displayChannelName": "nacat",

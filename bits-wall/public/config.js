@@ -5,8 +5,6 @@ const twitch = window.Twitch.ext;
 
 twitch.onContext((context) => {
   twitch.rig.log(context);
-  setChannelConfig(JSON.stringify({'one': 'one'}))
-
 });
 
 twitch.onAuthorized((auth) => {
@@ -46,4 +44,12 @@ function saveBrickSetting() {
     setting.bricks = bricks
   }
   setChannelConfig(setting)
+}
+
+function uploadBackground() {
+
+}
+
+function uploadBackground() {
+  
 }
