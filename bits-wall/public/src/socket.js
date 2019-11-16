@@ -1,12 +1,16 @@
-let myweb;
+let socket = io.connect('http://ec2-18-179-200-250.ap-northeast-1.compute.amazonaws.com:3000');
 
-(function () {
-    let socket = io.connect('http://localhost:3000');
-    myweb = socket;
-    socket.on('news', function (data) {
-        console.log(data);
-        socket.emit('my other event', { my: 'data' });
+socket.on('updateWall', () => {
+
+});
+
+socket.on('getWall', () => {
+
+});
+
+function breakBrick(channelId, brickKey) {
+    socket.emit('breakBrick', {
+        channelId,
+        brickKey
     });
-
-
-})()
+}
