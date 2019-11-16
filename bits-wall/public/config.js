@@ -103,12 +103,20 @@ function launchBrickSetting() {
 }
 
 function uploadImage(e) {
+  console.log('hihihihi')
   var file = e.files[0];
   if (!file) {
       return;
   }
   twitch.rig.log('file')
   twitch.rig.log(file)
+
+  const reader = new FileReader();
+  reader.onload= function(e){
+    let src = e.target.result
+    setBackgroundImage(src)
+  }
+  reader.readAsDataURL(file);
   console.log('file', file)
   e.value = '';
 }
