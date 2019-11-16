@@ -1,3 +1,17 @@
+const bits = window.Twitch.ext.bits;
+
+bits.onTransactionComplete(function (o){
+  const productType = o.product.sku;
+  console.log(`Transaction ${productType} complete`);
+  console.log(o);
+  // Explore
+});
+
+bits.onTransactionCancelled((o)=>{
+  console.log(`Transaction ${JSON.stringify(o)} cancel`);
+  console.log(o);
+});
+
 window.onload = function(){
   this.console.log("Hello Twitch Hackthon!!")
 
@@ -22,6 +36,7 @@ window.onload = function(){
   global.fcanvas.on('selection:created', (info)=>{
     let target = info.target
     let brick = global.bricks[target.brickIndex]
+    bits.useBits(brick.type);
     console.log('brick = ', brick)
     global.fcanvas.discardActiveObject();
   })
