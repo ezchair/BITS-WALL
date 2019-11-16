@@ -40,6 +40,7 @@ window.onload = function(){
   global.fcanvas.on('selection:created', (info)=>{
     let target = info.target
     let brick = global.bricks[target.brickIndex]
-    console.log('id = ', brick)
+    console.log('brick = ', brick)
+    global.fcanvas.discardActiveObject();
   })
 }
