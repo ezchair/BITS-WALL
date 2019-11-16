@@ -1,6 +1,9 @@
 {
   "name": "bitswall",
   "version": "1.0.0",
+  "scripts": {
+    "start": "node ./services/server.js"
+  },
   "dependencies": {
     "boom": "^7.2.0",
     "color": "^3.0.0",
@@ -9,6 +12,10 @@
     "inert": "^5.1.0",
     "jsonwebtoken": "^8.2.0",
     "request": "^2.85.0",
-    "selfsigned": "^1.10.2"
+    "selfsigned": "^1.10.2",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0",
+    "ws": "^7.2.0"
   }
 }
