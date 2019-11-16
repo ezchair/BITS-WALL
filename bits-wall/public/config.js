@@ -1,9 +1,19 @@
-let token, userId, channelId;
+let token, userId;
+let channelId = "470972377";
 let config = {}
 
 const twitch = window.Twitch.ext;
 
 twitch.onContext((context) => {
+  if (twitch.configuration) {
+    twitch.rig.log(twitch.configuration);
+    twitch.rig.log('yes');
+
+  }
+  else {
+    twitch.rig.log('nonono');
+  }
+
   if (!config || config === '' || JSON.stringify(config) === '{}') {
     setChannelConfig(JSON.stringify({}))
   }
@@ -42,15 +52,17 @@ twitch.configuration.onChanged( () => {
 }); 
 
 function setChannelConfig(content) {
-  console.log('content', content)
+  twitch.rig.log('content', content)
   const version = ( config.version ?  parseFloat(config.version) + 1 : 1.0 ).toString()
-  console.log('version', version)
+  twitch.rig.log('version', version)
   twitch.configuration.set(
     "broadcaster",
     version,
     content
   );
-  console.log('config', config)
+
+  config = content
+  twitch.rig.log('config', config)
 }
 
 function saveBrickSetting() {
@@ -58,9 +70,6 @@ function saveBrickSetting() {
     channelId: channelId
   }
   const bitsWall  = convert2BrickData()
-  console.log('bitsWall', bitsWall)
-  twitch.rig.log('bitsWall')
-  twitch.rig.log(bitsWall)
   if (!bitsWall) {
     setting.bitsWall = []
   }
@@ -69,27 +78,27 @@ function saveBrickSetting() {
   }
   twitch.rig.log('setting')
   twitch.rig.log(setting)
-  console.log('setting', setting)
+  console.log('setting', typeof(setting), setting)
   setChannelConfig(setting)
 }
 
 function launchBrickSetting() {
-  saveBrickSetting()
-  let requestData = config;
-  twitch.rig.log('requestData')
-  twitch.rig.log(requestData)
-  twitch.rig.log(typeof(requestData))
+  // saveBrickSetting()
+  // let requestData = config;
+  // twitch.rig.log('requestData')
+  // twitch.rig.log(requestData)
+  // twitch.rig.log(typeof(requestData))
 
-  const url = 'http://ec2-18-179-200-250.ap-northeast-1.compute.amazonaws.com:3000/createWall'
+  // const url = 'http://ec2-18-179-200-250.ap-northeast-1.compute.amazonaws.com:3000/createWall'
 
-  $.ajax({
-    type: 'POST',
-    url: url,
-    data: JSON.stringify(requestData),
-    success: function(data) { twitch.rig.log('data: ' + data); },
-    contentType: "application/json",
-    dataType: 'json'
-  });
+  // $.ajax({
+  //   type: 'POST',
+  //   url: url,
+  //   data: JSON.stringify(requestData),
+  //   success: function(data) { twitch.rig.log('data: ' + data); },
+  //   contentType: "application/json",
+  //   dataType: 'json'
+  // });
   // $.ajax({
   //   type: 'POST',
   //   url: 'http://ec2-18-179-200-250.ap-northeast-1.compute.amazonaws.com:3000/createWall',
@@ -99,6 +108,22 @@ function launchBrickSetting() {
   //   dataType: 'json'
   //   });
   // $.post( url, requestData)
+  const bitsWall  = convert2BrickData()
+  let requestData = {"channelId": channelId,"bitsWall": bitsWall}
+  twitch.rig.log('requestData')
+  twitch.rig.log(requestData)
+  $.ajax({
+    type: 'POST',
+    url: 'http://ec2-18-179-200-250.ap-northeast-1.compute.amazonaws.com:3000/createWall',
+    data: JSON.stringify(requestData),
+    success: function(data) {
+      console.log('ssuio');
+      console.log(data);
+      },
+    contentType: "application/json",
+    dataType: 'json'
+  });
+
 }
 
 function uploadImage(e) {
@@ -106,8 +131,12 @@ function uploadImage(e) {
   if (!file) {
       return;
   }
-  twitch.rig.log('file')
-  twitch.rig.log(file)
+  const reader = new FileReader();
+  reader.onload= function(e){
+    let src = e.target.result
+    setBackgroundImage(src)
+  }
+  reader.readAsDataURL(file);
   console.log('file', file)
   e.value = '';
 }

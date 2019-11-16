@@ -3,7 +3,8 @@ let
   vw = 1980,
   canvas = null,
   fcanvas = null,
-  move = 10
+  move = 10,
+  backgroundImage = null
 ;
 
 window.onload = () => {
@@ -68,6 +69,24 @@ const convert2BrickData = () =>{
 
 let sss = JSON.parse(`[{"id":"0","x":45,"y":75,"sx":1,"sy":1,"angle":0,"type":"STAR","active":true,"reward":null},{"id":"1","x":155,"y":107,"sx":1,"sy":1,"angle":0,"type":"RECTANGLE","active":true,"reward":null}]`)
 
+const setBackgroundImage = (img) => {
+  backgroundImage = img
+
+  let image = new Image()
+  image.src = img
+  image.onload = () =>{
+    // console.log(image.height)
+    // console.log(image.width)
+
+    // fcanvas.setHeight(image.height)
+    // fcanvas.setWidth(image.width)
+    fcanvas.setBackgroundImage(backgroundImage, fcanvas.renderAll.bind(fcanvas), {
+      backgroundImageOpacity: 0.5,
+      backgroundImageStretch: false,
+    })
+  }
+
+}
 
 window.onkeydown = function(e){
   if(e.keyCode === 16){
