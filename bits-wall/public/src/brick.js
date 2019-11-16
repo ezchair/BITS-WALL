@@ -2,7 +2,8 @@
 
 
 class Brick{
-  constructor(x, y, sx, sy, type, active, reward){
+  constructor(id, x, y, sx, sy, type, active, reward){
+    this.id = id
     this.x = x
     this.y = y
     this.sx = sx

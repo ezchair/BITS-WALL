@@ -31,11 +31,17 @@ window.onload = function(){
       scaleX: brick.sy,
       scaleY: brick.sx,
     })
+
+    img.brickIndex = i
     global.fBricks.push(img)
     global.fcanvas.add(img);
   }
 
-  global.fcanvas.on('mouse:down', ()=>{
-    
+  global.fcanvas.on('selection:created', (info1, info2, info3, info4)=>{
+    console.log('hello')
+    console.log(info1)
+    console.log(info2)
+    console.log(info3)
+    console.log(info4)
   })
 }
