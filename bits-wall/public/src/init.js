@@ -1,11 +1,8 @@
-console.log('hi')
+
+
+
 window.onload = function(){
   this.console.log("Hello Twitch Hackthon!!")
-  
-  console.log(this.document.getElementById('testbutton'))
-  document.getElementById('testbutton').addEventListener('click', function () {
-    console.log('hihihihi')
-  });
 
   // init canvas
   global.canvas = document.createElement('canvas');
@@ -23,17 +20,22 @@ window.onload = function(){
   global.canvas.width = global.vw;
   global.canvas.height = global.vh;
 
-  var canvas = new fabric.Canvas('canvas');
+  global.fcanvas = new fabric.Canvas('canvas');
 
-  var rect = new fabric.Rect({
-      top : 100,
-      left : 100,
-      width : 60,
-      height : 70,
-      fill : 'red'
-  });
+  for(let i in global.bricks){
+    let brick = global.bricks[i]
 
-  canvas.add(rect);
+    let img = new fabric.Image(BRICK_INFO[brick.type].image,{
+      left: brick.x,
+      top: brick.y,
+      scaleX: brick.sy,
+      scaleY: brick.sx,
+    })
+    global.fBricks.push(img)
+    global.fcanvas.add(img);
+  }
 
-  // this.main()
+  global.fcanvas.on('mouse:down', ()=>{
+    
+  })
 }
