@@ -57,7 +57,10 @@
             </button>
             <canvas id="canvas" width="900" height="600"></canvas>
             <div class="w3-bar">
-                <button class="w3-button w3-medium w3-deep-orange" onclick="">Upload Image</button>
+                <form id="form" runat="server">
+                    <input id="file" type="file" onchange="upload(this)" style="display: none" />
+                    <button class="w3-button w3-medium w3-deep-orange" onclick="file.click()">Upload Image</button>
+                </form>
                 <button class="w3-button w3-medium w3-orange" onclick="saveBrickSetting();">Save Wall</button>
                 <button class="w3-button w3-medium w3-amber" onclick="">Launch</button>
             </div>
@@ -66,4 +69,14 @@
 
 
 </body>
+<script>
+    function upload(e) {
+        var file = e.files[0];
+        if (!file) {
+            return;
+        }
+
+        e.value = '';
+    }
+</script>
 </html>
