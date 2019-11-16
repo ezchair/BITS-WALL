@@ -6,7 +6,7 @@ socket.on('connect', () => {
     socket.emit('register', 43797122);
 });
 
-socket.on('updateWall', (bitsWallMap, brickId) => {
+socket.on('updateWall', (bitsWall, brickId) => {
 
 });
 

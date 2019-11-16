@@ -71,7 +71,11 @@ io.on('connection', function (socket) {
 
         //break brick
         const bitsWall = bitsWallMap[channelId];
-        bitsWall[brickId].active = false;
+        for(let brick of bitsWall){
+            if(brick.id === brickId){
+                brick.active = false;
+            }
+        }
 
         if (clients && clients.length) {
             for (let s of clients) {
@@ -88,7 +92,5 @@ io.on('connection', function (socket) {
             clients.splice(i, 1);
             console.log(`ChannelId:${_channelId} socketId:${socket.id} disconnect.`);
         }
-
-
     });
 });
