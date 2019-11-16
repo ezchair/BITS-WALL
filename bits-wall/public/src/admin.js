@@ -63,6 +63,7 @@ const convert2BrickData = () =>{
   }
   console.log(result)
   console.log(JSON.stringify(result))
+  return result
 }
 
 let sss = JSON.parse(`[{"id":"0","x":45,"y":75,"sx":1,"sy":1,"angle":0,"type":"STAR","active":true,"reward":null},{"id":"1","x":155,"y":107,"sx":1,"sy":1,"angle":0,"type":"RECTANGLE","active":true,"reward":null}]`)

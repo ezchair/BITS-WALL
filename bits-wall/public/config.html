@@ -34,7 +34,12 @@
     
     <div id = "content" >
         <h3> Welcome to Brick Wall  <h3>
-        <p> 1. Upload a screen shot as background before building up your customized wall</p>
+        <p> 1. Upload a screen shot as background before building up your customized wall
+            <form id="form" runat="server">
+                <input id="file" type="file" onchange="uploadImage(this)" style="display: none" />
+                <button class="w3-button w3-medium w3-deep-orange" onclick="file.click()">Upload Image</button>
+            </form>
+        </p>
         <p> 2. Click & Drap : place your bricks wherever you want in any scales & angles</p>
         <p> 3. Don't forget to store your master piece!!</p>
         <p> 4. Launch you Bits Wall as long as you're ready</p>
@@ -57,26 +62,12 @@
             </button>
             <canvas id="canvas" width="900" height="600"></canvas>
             <div class="w3-bar">
-                <form id="form" runat="server">
-                    <input id="file" type="file" onchange="upload(this)" style="display: none" />
-                    <button class="w3-button w3-medium w3-deep-orange" onclick="file.click()">Upload Image</button>
-                </form>
                 <button class="w3-button w3-medium w3-orange" onclick="saveBrickSetting();">Save Wall</button>
-                <button class="w3-button w3-medium w3-amber" onclick="">Launch</button>
+                <button class="w3-button w3-medium w3-amber" onclick="launchBrickSetting();">Launch</button>
             </div>
         </div>
     </div>
 
 
 </body>
-<script>
-    function upload(e) {
-        var file = e.files[0];
-        if (!file) {
-            return;
-        }
-
-        e.value = '';
-    }
-</script>
 </html>
