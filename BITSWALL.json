@@ -29,10 +29,10 @@
     },
     {
       "id": "2",
-      "label": "config",
+      "label": "",
       "channelId": "470972377",
       "configurationAnchor": "panel",
-      "displayChannelName": "alchemy_wimp",
+      "displayChannelName": "nacat",
       "type": "config",
       "features": {
         "isBitsEnabled": true,
