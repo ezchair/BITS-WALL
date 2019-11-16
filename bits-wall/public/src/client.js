@@ -32,7 +32,7 @@ window.onload = function(){
   
   // push canvas to body
   document.body.appendChild(global.canvas);
-  console.log(global.canvas)
+  // console.log(global.canvas)
 
   // design canvas weight and height
   global.vw = 600;
@@ -54,22 +54,24 @@ window.onload = function(){
   fake()
 }
 
-const handleReflase = (bricks) =>{
+const handleReflash = (bricks) =>{
   global.fBricks = []
   global.bricks = []
   global.fcanvas.clear()
-
+  
   for(let i in bricks){
     let src = bricks[i]
-    let brick = new Brick(src.id, src.x, src.y, src.sx, src.sy, src.type, src.active, src.reward)
+    let brick = new Brick(src.id, src.x, src.y, src.sx, src.sy, src.angle,src.type, src.active, src.reward)
     global.bricks.push(brick)
 
     if(brick.active){
+      console.log('hi')
       let fObj = new fabric.Image(BRICK_INFO[brick.type].image,{
         left: brick.x,
         top: brick.y,
         scaleX: brick.sy,
         scaleY: brick.sx,
+        angle: brick.angle
       })
   
       fObj.brickIndex = i
@@ -81,17 +83,17 @@ const handleReflase = (bricks) =>{
 }
 
 let fake = () =>{
-  handleReflase([
-      new Brick(0, 100, 100, 1, 1, "RECTANGLE", true, null),
-      new Brick(1, 200, 200, 1, 1, "DIMOND", true, null),
-      new Brick(2, 300, 300, 1, 1, "STAR", true, null)
+  handleReflash([
+      new Brick(0, 100, 100, 1, 1, 0, "RECTANGLE", true, null),
+      new Brick(1, 200, 200, 1, 1, 0, "DIMOND", true, null),
+      new Brick(2, 300, 300, 1, 1, 0, "STAR", true, null)
   ])
 }
 
 let fake2 = () =>{
-  handleReflase([
-      new Brick(0, 100, 150, 1, 1, "RECTANGLE", true, null),
-      new Brick(1, 200, 250, 1, 1, "DIMOND", true, null),
-      new Brick(2, 300, 350, 1, 1, "STAR", true, null)
+  handleReflash([
+      new Brick(0, 100, 150, 1, 1, 45, "RECTANGLE", true, null),
+      new Brick(1, 200, 250, 1, 1, 45, "DIMOND", true, null),
+      new Brick(2, 300, 350, 1, 1, 45, "STAR", true, null)
   ])
 }
