@@ -1,6 +1,9 @@
 {
   "name": "bitswall",
   "version": "1.0.0",
+  "scripts": {
+    "start": "node ./services/server.js"
+  },
   "dependencies": {
     "boom": "^7.2.0",
     "color": "^3.0.0",
