@@ -22,7 +22,8 @@ const channelClientsMap = {};
 app.post('/createWall', (req, res) => {
     const {channelId, bitsWall} = req.body;
     bitsWallMap[channelId] = bitsWall;
-    res.json();
+    console.log(`channelId ${channelId} create wall ${bitsWall.length}`)
+    res.json(bitsWall);
 });
 
 app.get('/bitsWallMap', (req, res) => {
