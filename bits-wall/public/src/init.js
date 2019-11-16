@@ -37,11 +37,9 @@ window.onload = function(){
     global.fcanvas.add(img);
   }
 
-  global.fcanvas.on('selection:created', (info1, info2, info3, info4)=>{
-    console.log('hello')
-    console.log(info1)
-    console.log(info2)
-    console.log(info3)
-    console.log(info4)
+  global.fcanvas.on('selection:created', (info)=>{
+    let target = info.target
+    let brick = global.bricks[target.brickIndex]
+    console.log('id = ', brick)
   })
 }
