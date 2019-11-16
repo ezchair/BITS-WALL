@@ -50,6 +50,8 @@ window.onload = function(){
     console.log('brick = ', brick)
     global.fcanvas.discardActiveObject();
   })
+
+  fake()
 }
 
 const handleReflash = (bricks) =>{
