@@ -2,7 +2,8 @@ let
   vh = 1280,
   vw = 1980,
   canvas = null,
-  fcanvas = null
+  fcanvas = null,
+  move = 10
 ;
 
 window.onload = () => {
@@ -15,8 +16,8 @@ const addBit = (type) =>{
   let fObj = new fabric.Image(BRICK_INFO[type].image,{
     left: 0,
     top: 0,
-    scaleX: 1,
-    scaleY: 1,
+    scaleX: .5,
+    scaleY: .5,
   })
 
   fcanvas.add(fObj)
@@ -68,22 +69,72 @@ let sss = JSON.parse(`[{"id":"0","x":45,"y":75,"sx":1,"sy":1,"angle":0,"type":"S
 
 
 window.onkeydown = function(e){
-  if(e.keyCode === 8){
+  if(e.keyCode === 16){
+    move = 2
+  }
+  if(e.keyCode === 8 || e.keyCode === 46){
     if(fcanvas){
-      let activeObject = fcanvas.getActiveObject()
       let activeGroup = fcanvas.getActiveObjects()
-  
-      if(activeObject){
-        fcanvas.remove(activeObject);
-      }
-      
+
       if(activeGroup){
         for(let i in activeGroup){
           let obj = activeGroup[i]
           fcanvas.remove(obj)
         }
+        fcanvas.discardActiveObject()
       }
-      fcanvas.discardActiveObject()
     }
+  }
+  // up
+  else if(e.keyCode === 38){
+    let activeGroup = fcanvas.getActiveObjects()
+    if(activeGroup){
+      for(let i in activeGroup){
+        let obj = activeGroup[i]
+        obj.set('top', obj.top - move)
+      }
+      fcanvas.renderAll()
+    }
+  }
+  //down
+  else if(e.keyCode === 40){
+    let activeGroup = fcanvas.getActiveObjects()
+    if(activeGroup){
+      for(let i in activeGroup){
+        let obj = activeGroup[i]
+        obj.set('top', obj.top + move)
+      }
+      fcanvas.renderAll()
+    }
+  }
+
+  else if(e.keyCode === 37){
+    let activeGroup = fcanvas.getActiveObjects()
+    if(activeGroup){
+      for(let i in activeGroup){
+        let obj = activeGroup[i]
+        obj.set('left', obj.left - move)
+      }
+      fcanvas.renderAll()
+    }
+  }
+
+  else if(e.keyCode === 39){
+    let activeGroup = fcanvas.getActiveObjects()
+    if(activeGroup){
+      for(let i in activeGroup){
+        let obj = activeGroup[i]
+        obj.set('left', obj.left + move)
+      }
+      fcanvas.renderAll()
+    }
+  }
+
+  this.console.log(move)
+}
+
+window.onkeyup = function (e){
+  if(e.keyCode === 16){
+    move = 10
   }
 }

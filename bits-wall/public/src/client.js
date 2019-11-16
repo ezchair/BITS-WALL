@@ -7,7 +7,8 @@ const global = {
   mode: null,
 
   bricks: [],
-  fBricks: []
+  fBricks: [],
+  handlingBrick: null
 }
 
 bits.onTransactionComplete(function (o){
@@ -46,6 +47,7 @@ window.onload = function(){
   global.fcanvas.on('selection:created', (info)=>{
     let target = info.target
     let brick = global.bricks[target.brickIndex]
+    handlingBrick = brick
     bits.useBits(brick.type);
     console.log('brick = ', brick)
     global.fcanvas.discardActiveObject();
