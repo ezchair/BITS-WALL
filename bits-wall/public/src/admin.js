@@ -65,3 +65,25 @@ const convert2BrickData = () =>{
 }
 
 let sss = JSON.parse(`[{"id":"0","x":45,"y":75,"sx":1,"sy":1,"angle":0,"type":"STAR","active":true,"reward":null},{"id":"1","x":155,"y":107,"sx":1,"sy":1,"angle":0,"type":"RECTANGLE","active":true,"reward":null}]`)
+
+
+window.onkeydown = function(e){
+  if(e.keyCode === 8){
+    if(fcanvas){
+      let activeObject = fcanvas.getActiveObject()
+      let activeGroup = fcanvas.getActiveObjects()
+  
+      if(activeObject){
+        fcanvas.remove(activeObject);
+      }
+      
+      if(activeGroup){
+        for(let i in activeGroup){
+          let obj = activeGroup[i]
+          fcanvas.remove(obj)
+        }
+      }
+      fcanvas.discardActiveObject()
+    }
+  }
+}
