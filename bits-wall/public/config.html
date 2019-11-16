@@ -36,8 +36,9 @@
         <h3> Welcome to Brick Wall  <h3>
         <p> 1. Upload a screen shot as background before building up your customized wall
             <form id="form" runat="server">
-                <input id="file" type="file" onchange="uploadImage(this)" style="display: none" />
-                <button class="w3-button w3-medium w3-deep-orange" onclick="file.click()">Upload Image</button>
+                <input id="file" type="file" onchange="uploadImage(this)"  />
+                <!-- style="display: none" -->
+                <!-- <button class="w3-button w3-medium w3-deep-orange" onclick="file.click()">Upload Image</button> -->
             </form>
         </p>
         <p> 2. Click & Drap : place your bricks wherever you want in any scales & angles</p>
@@ -60,7 +61,7 @@
             <button onclick="addBit('STAR')">
                 <img src="./imgs/_10000.png" />
             </button>
-            <canvas id="canvas" width="900" height="600"></canvas>
+            <canvas id="canvas" width="1280" height="720"></canvas>
             <div class="w3-bar">
                 <button class="w3-button w3-medium w3-orange" onclick="saveBrickSetting();">Save Wall</button>
                 <button class="w3-button w3-medium w3-amber" onclick="launchBrickSetting();">Launch</button>
