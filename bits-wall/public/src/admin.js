@@ -129,8 +129,6 @@ window.onkeydown = function(e){
       fcanvas.renderAll()
     }
   }
-
-  this.console.log(move)
 }
 
 window.onkeyup = function (e){
