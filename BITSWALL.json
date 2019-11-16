@@ -1,6 +1,6 @@
 {
   "allowHttpBackend": false,
-  "backendCommand": "node backend -c \"ob69ek1x0m4r98thcr753xdszt7oll\" -s \"oUWvJv34GGHwsngqPpRXSeeB2uJa93NrYA3PilEDWXg=\"",
+  "backendCommand": "/Users/nacat/.nvm/versions/node/v10.16.3/bin/node backend -c \"ob69ek1x0m4r98thcr753xdszt7oll\" -s \"oUWvJv34GGHwsngqPpRXSeeB2uJa93NrYA3PilEDWXg=\"",
   "backendFolderName": "bits-wall/services",
   "certificateExceptions": [],
   "extensionViews": [
@@ -19,6 +19,29 @@
       "linked": false,
       "linkedUserId": "",
       "mode": "viewer",
+      "isPopout": false,
+      "role": "Broadcaster",
+      "orientation": "Portrait",
+      "frameSize": {
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "id": "2",
+      "label": "dashboard",
+      "channelId": "265737932",
+      "configurationAnchor": "panel",
+      "displayChannelName": "nacat",
+      "type": "config",
+      "features": {
+        "isBitsEnabled": true,
+        "isChatEnabled": false,
+        "isSubscriptionStatusAvailable": false
+      },
+      "linked": true,
+      "linkedUserId": "265737932",
+      "mode": "config",
       "isPopout": false,
       "role": "Broadcaster",
       "orientation": "Portrait",
