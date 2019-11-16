@@ -6,10 +6,15 @@ socket.on('connect', () => {
     socket.emit('register', 43797122);
 });
 
-socket.on('updateWall', (bitsWall, brickId) => {
-
+socket.on('updateWall', (bricks = [], brickId) => {
+    console.log(bricks)
+    handleReflash(bricks)
+    if(brickId){
+        // handle for burst!!
+    }
+    
 });
 
-function breakBrick(channelId, brickId) {
+function breakBrick(brickId,channelId) {
     socket.emit('breakBrick', channelId, brickId);
 }
