@@ -29,8 +29,8 @@
     },
     {
       "id": "2",
-      "label": "",
-      "channelId": "36498998",
+      "label": "config",
+      "channelId": "470972377",
       "configurationAnchor": "panel",
       "displayChannelName": "alchemy_wimp",
       "type": "config",
