@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const router = express.Router();
 const {
-    SERVER_PORT = 3000
+    SERVER_PORT = 13000
 } = process.env;
 
 app.use(bodyParser.json());
@@ -12,6 +12,7 @@ app.use((req, res, next) => {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
+app.use(express.static('public'));
 app.use(router);
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
