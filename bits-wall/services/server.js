@@ -17,6 +17,7 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
 const bitsWallMap = {};
+const bitsWallSettingsMap = {};
 const channelClientsMap = {};
 
 app.post('/createWall', (req, res) => {
@@ -33,6 +34,16 @@ app.get('/bitsWallMap', (req, res) => {
 
 app.get('/channelClientsMap', (req, res) => {
     res.json(channelClientsMap);
+});
+
+api.post('/bitsWallSettings', (req, res) => {
+    const {settings, channelId} = req.body;
+    bitsWallSettingsMap[channelId] = settings;
+    return res.json(bitsWallSettingsMap[channelId]);
+});
+
+api.get('/bitsWallSettings', (req, res) => {
+    return res.json(bitsWallSettingsMap[channelId]);
 });
 
 app.get('/update', (req, res) => {
