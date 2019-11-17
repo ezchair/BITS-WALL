@@ -28,8 +28,9 @@ app.post('/createWall', (req, res) => {
     console.log(`bitsWall ${JSON.stringify(bitsWall)}`);
     const clients = channelClientsMap[channelId];
 
-    if(clients && clients.lenght){
+    if(clients && clients.length){
         for(let c of clients){
+            console.log('create wall update wall');
             c.emit('updateWall', bitsWallMap[channelId]);
         }
     }
