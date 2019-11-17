@@ -10,6 +10,10 @@ socket.on('updateWall', (bricks = [], brickId) => {
     console.log(bricks)
     handleReflash(bricks)
     if(brickId){
+        console.log('delete id = ', brickId)
+        let deleteBrick = bricks.find((b)=>b.id === brickId)
+        console.log(deleteBrick)
+        drawBurst(deleteBrick)
         // handle for burst!!
     }
     
