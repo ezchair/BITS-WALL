@@ -36,13 +36,13 @@ app.get('/channelClientsMap', (req, res) => {
     res.json(channelClientsMap);
 });
 
-api.post('/bitsWallSettings', (req, res) => {
+app.post('/bitsWallSettings', (req, res) => {
     const {settings, channelId} = req.body;
     bitsWallSettingsMap[channelId] = settings;
     return res.json(bitsWallSettingsMap[channelId]);
 });
 
-api.get('/bitsWallSettings', (req, res) => {
+app.get('/bitsWallSettings', (req, res) => {
     const {channelId} = req.query;
     return res.json(bitsWallSettingsMap[channelId]);
 });
