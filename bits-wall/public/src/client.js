@@ -76,6 +76,7 @@ window.onload = function(){
 }
 
 const handleReflash = (bricks) =>{
+  if(bricks.length < 1) return
   _GLOBAL.fBricks = []
   _GLOBAL.bricks = []
   _GLOBAL.fcanvas.clear()
@@ -86,7 +87,6 @@ const handleReflash = (bricks) =>{
     _GLOBAL.bricks.push(brick)
 
     if(brick.active){
-      console.log('hi')
       let fObj = new fabric.Image(BRICK_INFO[brick.type].image,{
         left: brick.x,
         top: brick.y,
@@ -103,7 +103,7 @@ const handleReflash = (bricks) =>{
   }
 }
 
-const drawBurst = (brick) => {
+const drawBurst = (bricks, brick) => {
   const random_number = Math.random()
   let img = null
   if(random_number > 0.5){
@@ -115,16 +115,6 @@ const drawBurst = (brick) => {
 
   // let img = _GLOBAL.burst03
   let speed = 80
-
-  // draw block first
-  let fObj = new fabric.Image(BRICK_INFO[brick.type].image,{
-    left: brick.x,
-    top: brick.y,
-    scaleX: brick.sy,
-    scaleY: brick.sx,
-    angle: brick.angle
-  })
-  _GLOBAL.fcanvas.add(fObj);
 
   const boom = {
     x: brick.x +  ( (120 * brick.sx) - 96 ), // * Math.sin(brick.angle * Math.PI / 180),
@@ -149,7 +139,8 @@ const drawBurst = (brick) => {
   }
 
   setTimeout(()=>{
-    _GLOBAL.fcanvas.remove(fObj)
+    brick.active = false
+    handleReflash(bricks)
   }, 15 * speed)
 
   setTimeout(()=>{

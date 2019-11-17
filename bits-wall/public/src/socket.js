@@ -8,14 +8,24 @@ socket.on('connect', () => {
 
 socket.on('updateWall', (bricks = [], brickId) => {
     console.log(bricks)
-    handleReflash(bricks)
     if(brickId){
-        console.log('delete id = ', brickId)
-        let deleteBrick = bricks.find((b)=>b.id === brickId)
-        console.log(deleteBrick)
-        drawBurst(deleteBrick)
+        let deleteBrick
+        for(let i in bricks){
+            let brick = bricks[i]
+            if(brick.id === brickId){
+                brick.active = true
+                deleteBrick = bricks[i]
+                break;
+            }
+        }
+
+        handleReflash(bricks)
+        drawBurst(bricks, deleteBrick)
         // handle for burst!!
+    }else{
+        handleReflash(bricks)
     }
+
     
 });
 
