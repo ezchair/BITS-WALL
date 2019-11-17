@@ -43,6 +43,7 @@ api.post('/bitsWallSettings', (req, res) => {
 });
 
 api.get('/bitsWallSettings', (req, res) => {
+    const {channelId} = req.query;
     return res.json(bitsWallSettingsMap[channelId]);
 });
 
