@@ -1,5 +1,5 @@
 let token, userId;
-let channelId = "470972377";
+let channelId = "43797122";
 let config = {}
 
 const twitch = window.Twitch.ext;
