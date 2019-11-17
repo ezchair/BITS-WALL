@@ -8,7 +8,7 @@
     <script src="./js/menu.js"></script>
 </head>
 <body style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
-
+    <!-- <script src="./js/twitch-ext.min.js"></script> -->
     <script src="https://extension-files.twitch.tv/helper/v1/twitch-ext.min.js"></script>
     <script src="./libs/jquery-3.3.1.min.js"></script>
     <script src="./libs/fabric.min.js"></script>
@@ -17,22 +17,22 @@
     <script src="./src/admin.js"></script>
     <script src="./config.js" type="text/javascript"></script>
     <header>
-        <span id="menuButton" onclick="toggleNav()">&#9776;</span>
+        <!-- <span id="menuButton" onclick="toggleNav()">&#9776;</span> -->
         <div class="navbar">
             <h2><img src="./imgs/brick-wall.svg"/></h2>
         </div>
     </header>
     
-    <div id="menu" class="sidenav">
+    <!-- <div id="menu" class="sidenav">
     <span class="close" onclick="toggleNav()">&#9776;</span>
     <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">&times;</a>
     <a href="javascript:void(0)" id="bricks" onclick="clickMenu(id);"><img class="menuIcon" src="./imgs/bricks.svg" />bricks</a>
     <a href="javascript:void(0)" id="rewards" onclick="clickMenu(id);"><img class="menuIcon" src="./imgs/gift.svg" />rewards</a>
-    </div>
+    </div> -->
     
     
     <div id = "content" >
-        <h3> Welcome to Brick Wall  <h3>
+        <h3> Welcome to Brick Wall  </h3>
         <p> 1. Upload a screen shot as background before building up your customized wall
             <form id="form" runat="server">
                 <input id="file" type="file" onchange="uploadImage(this)"  />
@@ -45,25 +45,27 @@
         <p> 4. Launch you Bits Wall as long as you're ready</p>
         
         <div class="w3-center">
-            <button onclick="addBit('TRIANGLE')">
+            <button id='bit1' >
                 <img src="./imgs/_1.png" />
             </button>
-            <button onclick="addBit('RECTANGLE')">
+            <button id='bit100' >
                 <img src="./imgs/_100.png" />
             </button>
-            <button onclick="addBit('PENTAGON')">
+            <button id='bit1000' >
                 <img src="./imgs/_1000.png" />
             </button>
-            <button onclick="addBit('DIMOND')">
+            <button id='bit5000' >
                 <img src="./imgs//_5000.png" />
             </button>
-            <button onclick="addBit('STAR')">
+            <button id='bit10000' >
                 <img src="./imgs/_10000.png" />
             </button>
-            <canvas id="canvas" width=1280 height=720></canvas>
-            <div class="w3-bar">
-                <button class="w3-button w3-medium w3-orange" onclick="saveBrickSetting();">Save Wall</button>
-                <button class="w3-button w3-medium w3-amber" onclick="launchBrickSetting();">Launch</button>
+        </div>
+        <canvas id="canvas" width=1280 height=720></canvas>
+        <div class="w3-center">
+                <div class="w3-bar">
+                <button id="save" class="w3-button w3-medium w3-orange" >Save Wall</button>
+                <button id="launch" class="w3-button w3-medium w3-amber" >Launch</button>
             </div>
         </div>
     </div>

@@ -11,6 +11,27 @@ window.onload = () => {
   canvas = document.getElementById('canvas')
   fcanvas = new fabric.Canvas('canvas');
 
+  document.getElementById("bit1").addEventListener("click", function(){
+    addBit('TRIANGLE');
+  })
+  document.getElementById("bit100").addEventListener("click", function(){
+    addBit('RECTANGLE');
+  })
+  document.getElementById("bit1000").addEventListener("click", function(){
+    addBit('PENTAGON');
+  })
+  document.getElementById("bit5000").addEventListener("click", function(){
+    addBit('DIMOND');
+  })
+  document.getElementById("bit10000").addEventListener("click", function(){
+    addBit('STAR');
+  })
+  document.getElementById("save").addEventListener("click", function(){
+    saveBrickSetting();
+  })
+  document.getElementById("launch").addEventListener("click", function(){
+    launchBrickSetting();
+  })
 }
 
 const addBit = (type) =>{
