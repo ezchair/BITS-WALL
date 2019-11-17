@@ -126,7 +126,9 @@ function launchBrickSetting() {
 
 }
 
-function uploadImage(e) {
+function uploadImage() {
+
+  let e = document.getElementById('file');
   var file = e.files[0];
   if (!file) {
       return;

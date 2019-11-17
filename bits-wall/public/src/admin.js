@@ -11,6 +11,9 @@ window.onload = () => {
   canvas = document.getElementById('canvas')
   fcanvas = new fabric.Canvas('canvas');
 
+  document.getElementById("file").addEventListener("change", function(){
+    uploadImage();
+  })
   document.getElementById("bit1").addEventListener("click", function(){
     addBit('TRIANGLE');
   })
