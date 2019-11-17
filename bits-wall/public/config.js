@@ -114,7 +114,7 @@ function launchBrickSetting() {
   twitch.rig.log(requestData)
   $.ajax({
     type: 'POST',
-    url: 'http://ec2-18-179-200-250.ap-northeast-1.compute.amazonaws.com:3000/createWall',
+    url: 'https://twi.eztable.com/createWall',
     data: JSON.stringify(requestData),
     success: function(data) {
       console.log('ssuio');
