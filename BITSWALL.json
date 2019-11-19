@@ -1,6 +1,6 @@
 {
   "allowHttpBackend": false,
-  "backendCommand": "node backend -c \"ob69ek1x0m4r98thcr753xdszt7oll\" -s \"oUWvJv34GGHwsngqPpRXSeeB2uJa93NrYA3PilEDWXg=\"",
+  "backendCommand": "/Users/nacat/.nvm/versions/node/v10.16.3/bin/node backend -c \"ob69ek1x0m4r98thcr753xdszt7oll\" -s \"oUWvJv34GGHwsngqPpRXSeeB2uJa93NrYA3PilEDWXg=\"",
   "backendFolderName": "bits-wall/services",
   "certificateExceptions": [],
   "extensionViews": [
@@ -26,6 +26,29 @@
         "width": 1280,
         "height": 720
       }
+    },
+    {
+      "id": "2",
+      "label": "",
+      "channelId": "470972377",
+      "configurationAnchor": "panel",
+      "displayChannelName": "nacat",
+      "type": "config",
+      "features": {
+        "isBitsEnabled": true,
+        "isChatEnabled": false,
+        "isSubscriptionStatusAvailable": false
+      },
+      "linked": true,
+      "linkedUserId": "265737932",
+      "mode": "config",
+      "isPopout": false,
+      "role": "Broadcaster",
+      "orientation": "Portrait",
+      "frameSize": {
+        "width": 1280,
+        "height": 1280
+      }
     }
   ],
   "manifest": {
@@ -34,11 +57,11 @@
     "authorName": "EZChair",
     "bitsEnabled": true,
     "canInstall": true,
-    "configUrl": "https://localhost:8080/config.html",
-    "configurationLocation": "none",
+    "configUrl": "http://localhost:8080/config.html",
+    "configurationLocation": "hosted",
     "description": "",
     "eulaTosUrl": "",
-    "hasChatSupport": false,
+    "hasChatSupport": true,
     "iconUrl": "",
     "iconUrls": {},
     "id": "ob69ek1x0m4r98thcr753xdszt7oll",
@@ -47,7 +70,7 @@
     "name": "BITSWALL",
     "panelHeight": 300,
     "privacyPolicyUrl": "",
-    "requestIdentityLink": false,
+    "requestIdentityLink": true,
     "requiredBroadcasterAbilities": [],
     "screenshotUrls": [],
     "sku": "",
@@ -58,28 +81,28 @@
     "vendorCode": "",
     "version": "0.0.1",
     "viewerSummary": "",
-    "viewerUrl": "https://localhost:8080/panel.html",
+    "viewerUrl": "http://localhost:8080/panel.html",
     "viewerUrls": {
-      "mobile": "https://localhost:8080/mobile.html",
-      "panel": "https://localhost:8080/panel.html",
-      "videoOverlay": "https://localhost:8080/video_overlay.html",
-      "component": "https://localhost:8080/video_component.html"
+      "mobile": "http://localhost:8080/mobile.html",
+      "panel": "http://localhost:8080/panel.html",
+      "videoOverlay": "http://localhost:8080/video_overlay.html",
+      "component": "http://localhost:8080/video_component.html"
     },
     "views": {
       "mobile": {
-        "viewerUrl": "https://localhost:8080/mobile.html"
+        "viewerUrl": "http://localhost:8080/mobile.html"
       },
       "panel": {
-        "viewerUrl": "https://localhost:8080/panel.html",
+        "viewerUrl": "http://localhost:8080/panel.html",
         "height": 300,
         "canLinkExternalContent": false
       },
       "videoOverlay": {
-        "viewerUrl": "https://localhost:8080/video_overlay.html",
+        "viewerUrl": "http://localhost:8080/video_overlay.html",
         "canLinkExternalContent": false
       },
       "component": {
-        "viewerUrl": "https://localhost:8080/video_component.html",
+        "viewerUrl": "http://localhost:8080/video_component.html",
         "aspectWidth": 0,
         "aspectHeight": 0,
         "aspectRatioX": 300,
@@ -93,14 +116,14 @@
         "canLinkExternalContent": false
       },
       "config": {
-        "viewerUrl": "https://localhost:8080/config.html",
+        "viewerUrl": "http://localhost:8080/config.html",
         "canLinkExternalContent": false
       }
     },
     "whitelistedConfigUrls": [],
     "whitelistedPanelUrls": []
   },
-  "frontendCommand": "",
+  "frontendCommand": "serve -l 8080",
   "frontendFolderName": "bits-wall/public",
   "name": "BITSWALL",
   "version": 1
